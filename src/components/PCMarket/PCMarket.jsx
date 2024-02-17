@@ -39,7 +39,7 @@ function PCMarket() {
 
         console.log(data)
         axios
-            .post('http://localhost:5555/marketdata',data)
+            .post('https://mapmymarket.onrender.com/marketdata',data)
             .then(() => {
             console.log(data);
             })
