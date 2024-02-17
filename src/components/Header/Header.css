@@ -1,0 +1,9 @@
+.Header{
+display: flex;
+flex-direction: row;
+flex-grow: 0.4;
+width:100%;
+background-image:url('../../assets/images/CUHeader.png');
+background-repeat: no-repeat;
+background-size: contain;
+}

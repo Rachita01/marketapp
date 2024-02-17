@@ -1,0 +1,10 @@
+.buttonStyle{
+    height: 40px;
+    width:fit-content;
+    margin-top: 10px;
+    font-size: 18px;
+    background-color: brown;
+    color:wheat;
+    border:0px;
+    border-radius: 5px;
+}

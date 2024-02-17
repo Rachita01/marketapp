@@ -1,0 +1,120 @@
+{
+    "users":
+    [
+      {
+        "username": "JINDAL.SANJAY",
+        "password": "SJINDAL@123",
+        "pccategory": "ADMIN"
+      },
+      {
+          "username": "JINDAL.SUMEET",
+          "password": "JINDAL@123",
+          "pccategory": "ADMIN"
+      },
+      {
+          "username": "AAKASH",
+          "password": "AAKASH@123",
+          "pccategory": "PCP"
+      },
+      {
+          "username": "SUNNY",
+          "password": "SUNNY@123",
+          "pccategory": "PCP"
+      },
+      {
+          "username": "ROHIT",
+          "password": "ROHIT@123",
+          "pccategory": "PCP"
+      },
+      {
+          "username": "ANIL",
+          "password": "ANIL@456",
+          "pccategory": "BISCUIT"
+      },
+      {
+          "username": "MANOJ",
+          "password": "MANOJ@456",
+          "pccategory": "BISCUIT"
+      },
+      {
+          "username": "RAJNISH",
+          "password": "RAJNISH@456",
+          "pccategory": "BISCUIT"
+      },
+      {
+          "username": "NITISH",
+          "password": "NITISH@456",
+          "pccategory": "BISCUIT"
+      },
+      {
+          "username": "AJAY",
+          "password": "AJAY@789",
+          "pccategory": "BISCUIT"
+      },
+      {
+          "username": "SONU",
+          "password": "SONU@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "MAHESH",
+          "password": "MAHESH@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "MOHAN",
+          "password": "MOHAN@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "VIVEK",
+          "password": "VIVEK@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "HARISH",
+          "password": "HARISH@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "SATBEER",
+          "password": "SATBEER@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "DHARAMVEER",
+          "password": "DHARAMVEER@789",
+          "pccategory": "CAD - MANDOLI"
+      },
+      {
+          "username": "PANKAJ",
+          "password": "PANKAJ@110",
+          "pccategory": "CAD - VISHWAS NAGAR"
+      },
+      {
+          "username": "JAI",
+          "password": "JAI@110",
+          "pccategory": "CAD - VISHWAS NAGAR"
+      },
+      {
+          "username": "SACHIN",
+          "password": "SACHIN@110",
+          "pccategory": "CAD - VISHWAS NAGAR"
+      },
+      {
+          "username": "JAI SAINI",
+          "password": "JAI SAINI@110",
+          "pccategory": "CAD - VISHWAS NAGAR"
+      },
+      {
+          "username": "DEEPAK",
+          "password": "DEEPAK@110",
+          "pccategory": "CAD - VISHWAS NAGAR"
+      },
+      {
+          "username": "SHIVAM",
+          "password": "SHIVAM@110",
+          "pccategory": "CAD - VISHWAS NAGAR"
+      }
+  ]
+    }
