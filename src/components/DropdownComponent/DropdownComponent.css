@@ -1,0 +1,8 @@
+select{
+    overflow: hidden !important;
+    width:50%
+}
+
+.dropDown{
+    display: contents;
+}

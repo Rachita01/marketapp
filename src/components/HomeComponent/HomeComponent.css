@@ -24,6 +24,7 @@
 
 .labelStyle{
     font-weight: 700;
+    font-family:'Times New Roman', Times, serif;
 }
 
 .loginHead{
@@ -36,4 +37,5 @@
 .userClass,.passwordClass{
     margin-bottom: 15px;
     padding: 5px;
+    font-family:'Times New Roman', Times, serif;
 }

@@ -6,8 +6,8 @@ router.post("/",async(request,response) => {
     try{
         const newMdata = {
             pcname:request.body.name,
-            shopname:request.body.shopname,
-            beatname:request.body.beatname,
+            shopname:request.body.shopname.current,
+            beatname:request.body.beatname.current,
             latitude:request.body.latitude,
             longitude:request.body.longitude
         }

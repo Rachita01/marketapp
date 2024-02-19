@@ -1,7 +1,43 @@
-.userClassPC{
-    margin-left: 5px;
+.shopClass{
+    display: -webkit-inline-box;
 }
 
-.beatClassPC{
-    margin-left: 10px;
+.beatClass{
+    display: -webkit-inline-box;
+}
+
+label{
+    margin-left: 20px;
+    margin-right: 4px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: 700;
+    color:brown
+}
+
+.buttonClass{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.formCard{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    height:250px;
+    width:fit-content;
+    background-color: bisque;
+    align-items: left;
+    border-radius: 15px;
+    box-shadow: 5px 2px 10px 2px darkgrey;
+}
+
+.nameHead{
+    font-family: 'Times New Roman', Times, serif;
+    color:brown
+}
+
+.inputClass{
+    margin-left: 100px;
+    width: fit-content;
 }
