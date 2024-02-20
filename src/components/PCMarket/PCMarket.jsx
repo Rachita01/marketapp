@@ -1,10 +1,10 @@
 import React,{useState,useEffect,useRef} from 'react';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
-// import Dropdown from '../DropdownComponent/DropdownComponent';
+import Dropdown from '../DropdownComponent/DropdownComponent';
 import {useLocation,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './PCMarket.css';
-import DropdownTest from '../DropDownTest/DropDownTest';
+//import DropdownTest from '../DropDownTest/DropDownTest';
 
 function PCMarket() {
     const [latitude,setLatitude] = useState(null);
@@ -160,19 +160,19 @@ function PCMarket() {
         <h1 className='nameHead'>HI {name.toUpperCase()}</h1>
         <div className='formCard'>
         <div className='beatClass'>
-        <label className='pcLabel'>Beat Name</label><DropdownTest options={beatList.current} onSelect={handleBeatChange}/>
+        <label className='pcLabel'>Beat Name</label><Dropdown options={beatList.current} onSelect={handleBeatChange}/>
         {/* <p>Selected value: {beatname.current}</p> */}
         </div>
         {showBeatInput && <input className="inputClass" type="text" value={beatInput} onChange={handleOtherBeat}/>}
         {showOrg ?
          
         <div className='shopClass'>
-        <label className='pcLabel'>Shop Name</label><DropdownTest options={originalShopList.current} onSelect={handleShopChange}/>
+        <label className='pcLabel'>Shop Name</label><Dropdown options={originalShopList.current} onSelect={handleShopChange}/>
          {/* <p>Selected value: {shopname.current}</p> */}
          </div>
          :
          <div className='shopClass'>
-         <label className='pcLabel'>Shop Name</label><DropdownTest options={updatedShopList} onSelect={handleShopChange}/>
+         <label className='pcLabel'>Shop Name</label><Dropdown options={updatedShopList} onSelect={handleShopChange}/>
           {/* <p>Selected value: {shopname.current}</p> */}
           </div>
          }
