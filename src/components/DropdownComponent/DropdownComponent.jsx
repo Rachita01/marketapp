@@ -13,7 +13,7 @@ const DropdownComponent = ({ options, onSelect }) => {
     // Delay rendering options for a short period
     const timeoutId = setTimeout(() => {
       console.log(options); // Make sure options are correct
-    }, 100);
+    }, 300);
 
     return () => clearTimeout(timeoutId);
   }, [options]);

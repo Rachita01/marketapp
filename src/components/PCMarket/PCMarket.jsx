@@ -57,8 +57,8 @@ function PCMarket() {
           };
 
           fetchMarket();
-          beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
-          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
+          beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
+          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
         
     },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput])
 
@@ -130,7 +130,7 @@ function PCMarket() {
 
     useEffect(() => {
        if(!showOrg && beatChange){
-        setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
+        setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
        }
        setBeatChange(false);
     },[list,showOrg,beatChange,name])
