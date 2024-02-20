@@ -74,6 +74,20 @@ function PCMarket() {
       };
 
     const handleSubmit = () => {    
+        axios
+        .post('https://mapmymarket.onrender.com/marketdata',data)
+        .then(() => {
+        console.log(data);
+        })
+        .catch((error) => {
+        console.log(error,data);
+        alert("An error happened. Please check console",error);
+        })
+
+        beatname.current = ""
+        shopname.current = ""
+        setBeatInput("")
+        setShopInput("")
         const currentDate = getCurrentDate();    
         const data = {
             name,
@@ -85,23 +99,7 @@ function PCMarket() {
         }
 
         console.log(data)
-        const confirm = window.alert("Location Sent!!");
-        if(confirm){
-        axios
-            .post('https://mapmymarket.onrender.com/marketdata',data)
-            .then(() => {
-            console.log(data);
-            })
-            .catch((error) => {
-            console.log(error,data);
-            alert("An error happened. Please check console",error);
-            })
-
-            beatname.current = ""
-            shopname.current = ""
-            setBeatInput("")
-            setShopInput("")
-            }
+        window.alert("Location Sent!!");
         }
     
         console.log(longitude,latitude)
