@@ -26,7 +26,6 @@ function PCMarket() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const name_final = name;
         const handleSendLocation = () => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(
@@ -58,8 +57,10 @@ function PCMarket() {
           };
 
           fetchMarket();
-          beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name_final) || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
-          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name_final) || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
+          setTimeout(() => {
+            beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
+          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
+          },200)
         
     },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput])
 
@@ -130,11 +131,13 @@ function PCMarket() {
     }
 
     useEffect(() => {
-       const name_final = name;
-       if(!showOrg && beatChange){
-        setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === name_final) || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
-       }
-       setBeatChange(false);
+     setTimeout(() => {
+        if(!showOrg && beatChange){
+            setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
+           }
+           setBeatChange(false);
+     },300)
+      
     },[list,showOrg,beatChange,name])
 
     const handleOtherBeat =(e)=>{
