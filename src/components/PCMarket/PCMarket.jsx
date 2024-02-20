@@ -85,7 +85,7 @@ function PCMarket() {
         }
 
         console.log(data)
-        const confirm = window.confirm("Location Sent!!");
+        const confirm = window.alert("Location Sent!!");
         if(confirm){
         axios
             .post('https://mapmymarket.onrender.com/marketdata',data)
@@ -101,7 +101,6 @@ function PCMarket() {
             shopname.current = ""
             setBeatInput("")
             setShopInput("")
-                navigate('/',{replace:true})
             }
         }
     
