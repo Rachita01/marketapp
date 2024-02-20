@@ -57,10 +57,9 @@ function PCMarket() {
           };
 
           fetchMarket();
-          setTimeout(() => {
-            beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
-          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
-          },500)
+            beatList.current = [...new Set(list.map(item => item.BEATNAME).sort())];
+          originalShopList.current = [...new Set(list.map(item => item.SHOPNAME).sort())];
+          
         
     },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput])
 
@@ -131,12 +130,10 @@ function PCMarket() {
     }
 
     useEffect(() => {
-     setTimeout(() => {
         if(!showOrg && beatChange){
-            setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === name) || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
+            setUpdatedList([...new Set(list.filter(item => (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME)).sort()])
            }
-           setBeatChange(false);
-     },500)
+           setBeatChange(false);    
       
     },[list,showOrg,beatChange,name])
 
