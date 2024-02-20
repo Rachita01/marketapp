@@ -26,6 +26,7 @@ function PCMarket() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const name_final = name;
         const handleSendLocation = () => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(
@@ -57,8 +58,8 @@ function PCMarket() {
           };
 
           fetchMarket();
-          beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
-          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
+          beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name_final) || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
+          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === name_final) || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
         
     },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput])
 
@@ -129,8 +130,9 @@ function PCMarket() {
     }
 
     useEffect(() => {
+       const name_final = name;
        if(!showOrg && beatChange){
-        setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
+        setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === name_final) || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
        }
        setBeatChange(false);
     },[list,showOrg,beatChange,name])
