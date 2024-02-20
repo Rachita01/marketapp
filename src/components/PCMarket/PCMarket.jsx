@@ -74,6 +74,17 @@ function PCMarket() {
       };
 
     const handleSubmit = () => {    
+        const currentDate = getCurrentDate();    
+        const data = {
+            name,
+            shopname,
+            beatname,
+            latitude,
+            longitude,
+            currentDate
+        }
+
+        console.log(data)
         axios
         .post('https://mapmymarket.onrender.com/marketdata',data)
         .then(() => {
@@ -88,17 +99,6 @@ function PCMarket() {
         shopname.current = ""
         setBeatInput("")
         setShopInput("")
-        const currentDate = getCurrentDate();    
-        const data = {
-            name,
-            shopname,
-            beatname,
-            latitude,
-            longitude,
-            currentDate
-        }
-
-        console.log(data)
         window.alert("Location Sent!!");
         }
     
