@@ -1,6 +1,11 @@
 {
     "users":
     [
+        {
+            "username": "demoone",
+            "password": "demo",
+            "pccategory": "PCP"
+          },
       {
         "username": "JINDAL.SANJAY",
         "password": "SJINDAL@123",

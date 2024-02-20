@@ -11,9 +11,8 @@ function HomeComponent() {
   const [user,setUser] = useState("")
   const [password,setPassword] = useState("");
   const [list,setList] = useState([]);
-  const navigate = useNavigate();
-  // const [users,setUsers] = useState([])
   const [pcdata,setPCData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,10 +25,13 @@ function HomeComponent() {
       }
     };
     fetchData();
+
+
+
   }, []);
   useEffect(() => {
-    console.log(list,pcdata)
-  },[list,pcdata])
+    console.log(list)
+  },[list])
 
   const handleSubmit = async () => {
     const data = {
@@ -39,8 +41,8 @@ function HomeComponent() {
 
       const filteredData = list.filter(item => item.username.toLowerCase() === data.user.toLowerCase());
       if(filteredData[0] && (filteredData[0].username.toLowerCase() === data.user.toLowerCase()) && (filteredData[0].password.toLowerCase() === data.password.toLowerCase())){
-        if(data.user.toLowerCase() === "jindal.sumeet"){
-          navigate('/adminhome',{state:{data:`${JSON.stringify(pcdata)}`}})
+        if(data.user.toLowerCase() === "jindal.sumeet" || data.user.toLowerCase() === "jindal.sanjay" || data.user.toLowerCase() === "demoone"){
+          navigate('/pcmarkettest',{state:{name:`${data.user}`}})
         }
         else{
       navigate("/pcmarket",{ state: { name:`${data.user}`}})
@@ -51,19 +53,18 @@ function HomeComponent() {
       }
     };
 
-  useEffect(() => {
-  axios
-  .get('https://credit-update.onrender.com/creditupdate')
-  .then((response) => {
-    console.log(response.data.data);
-    setPCData(response.data.data);
-    console.log(pcdata)
-  })
-  .catch((error) => {
-    console.log(error.message)
-  })
-},[pcdata])
-
+useEffect(() => {
+    axios
+    .get('https://mapmymarket.onrender.com/marketdata')
+    .then((response) => {
+      console.log(response.data.data);
+      setPCData(response.data.data);
+      console.log(pcdata)
+    })
+    .catch((error) => {
+      console.log(error.message)
+    })
+  },[pcdata])
   const handleUserChange =(event) => {
      setUser(event.target.value);
   }
