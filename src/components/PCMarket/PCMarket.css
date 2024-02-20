@@ -6,7 +6,7 @@
     display: -webkit-inline-box;
 }
 
-label{
+.pcLabel{
     margin-left: 20px;
     margin-right: 4px;
     font-family:'Times New Roman', Times, serif;

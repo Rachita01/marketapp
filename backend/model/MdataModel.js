@@ -23,6 +23,10 @@ const mdataSchema = mongoose.Schema(
         longitude:{
             type:String,
             required:true
+        },
+        date:{
+            type:String,
+            reuired:false
         }
     }
 );

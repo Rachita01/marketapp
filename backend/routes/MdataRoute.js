@@ -9,7 +9,8 @@ router.post("/",async(request,response) => {
             shopname:request.body.shopname.current,
             beatname:request.body.beatname.current,
             latitude:request.body.latitude,
-            longitude:request.body.longitude
+            longitude:request.body.longitude,
+            date:request.body.currentDate
         }
 
         const mdata = await Mdata.create(newMdata);

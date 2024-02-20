@@ -28,6 +28,7 @@ function AdminComponent() {
                     <th>Shop Name</th>
                     <th>Latitude</th>
                     <th>Longitude</th>
+                    <th>Visited On</th>
                 </thead>
                 <tbody>
                     {final_data.map(item => (
@@ -37,6 +38,7 @@ function AdminComponent() {
                             <td>{item.shopname}</td>
                             <td>{item.latitude}</td>
                             <td>{item.longitude}</td>
+                            <td>{item.date}</td>
                         </tr>))}
                 </tbody>
             </table>

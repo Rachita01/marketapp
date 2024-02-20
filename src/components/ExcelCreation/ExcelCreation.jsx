@@ -10,7 +10,7 @@ const ExcelCreation = ({ data }) => {
 
     // Provide headers manually
     // const headers = ['Sr.','Product','ICODE','Batch','MRP','Cs','Out','Unts','Qty','Amt','Kg.','Schm','Schm%','StarDisc.','CasePack','OutPack'];
-    const headers = ['PC Name','Beat Name','Shop Name','Latitude','Longitude'];
+    const headers = ['PC Name','Beat Name','Shop Name','Latitude','Longitude','Visited On'];
 
     // Create a worksheet and add headers
     const headerRow = [headers];
@@ -18,7 +18,7 @@ const ExcelCreation = ({ data }) => {
 
     // Convert your data to an array of arrays
     // const dataArray = data.map((item,index) => [index+1,item.name,1,1,item.mrp,1,1,1,item.quantity, item.amount,1,1,1,1,1,1]);
-    const dataArray = data.map(item => [item.pcname,item.beatname,item.shopname,item.latitude,item.longitude]);
+    const dataArray = data.map(item => [item.pcname,item.beatname,item.shopname,item.latitude,item.longitude,item.date]);
 
     // Add data rows to the worksheet
     XLSX.utils.sheet_add_aoa(worksheet, dataArray, { origin: 'A2' });

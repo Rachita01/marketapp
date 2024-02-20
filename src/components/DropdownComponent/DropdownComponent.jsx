@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './DropdownComponent.css';
 
-const Dropdown = ({ options, onSelect }) => {
+const DropdownComponent = ({ options, onSelect }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleSelect = (option) => {
@@ -9,7 +9,14 @@ const Dropdown = ({ options, onSelect }) => {
     onSelect(option);
   };
 
-  console.log(options);
+  useEffect(() => {
+    // Delay rendering options for a short period
+    const timeoutId = setTimeout(() => {
+      console.log(options); // Make sure options are correct
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [options]);
 
   return (
     <div className='dropDown'>
@@ -28,4 +35,4 @@ const Dropdown = ({ options, onSelect }) => {
   );
 };
 
-export default Dropdown;
+export default DropdownComponent;
