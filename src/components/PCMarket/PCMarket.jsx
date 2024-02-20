@@ -131,7 +131,7 @@ function PCMarket() {
 
     useEffect(() => {
         if(!showOrg && beatChange){
-            setUpdatedList([...new Set(list.filter(item => (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME)).sort()])
+            setUpdatedList([...new Set(list.filter(item => (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME).sort())])
            }
            setBeatChange(false);    
       
