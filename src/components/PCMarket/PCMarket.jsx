@@ -96,8 +96,6 @@ function PCMarket() {
         alert("An error happened. Please check console",error);
         })
 
-        beatname.current = ""
-        shopname.current = ""
         setBeatInput("")
         setShopInput("")
         window.alert("Location Sent!!");
