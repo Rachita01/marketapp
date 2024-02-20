@@ -12,7 +12,10 @@ function PCMarketTest() {
     const shopname = useRef("")
     const beatname = useRef("")
     const beatList = useRef([]);
-    const shopList = useRef([]);
+    const originalShopList = useRef([]);
+    const [showOrg,setShowOrg] = useState(true);
+    const [beatChange,setBeatChange] = useState(false);
+    const [updatedShopList,setUpdatedList] =  useState([]);
     const [beatInput,setBeatInput] = useState("");
     const [shopInput,setShopInput] = useState("");
     const [showBeatInput,setShowBeatInput] = useState(false);
@@ -55,7 +58,7 @@ function PCMarketTest() {
 
           fetchMarket();
           beatList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.BEATNAME))];
-          shopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
+          originalShopList.current = [...new Set(list.filter(item => (item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other").map(item => item.SHOPNAME))];
         
     },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput])
 
@@ -93,15 +96,30 @@ function PCMarketTest() {
         if(shopname.current.toLowerCase() === "other"){
             setShowShopInput(true);
          }
+         else{
+            setShowShopInput(false)
+         }
     }
 
     const handleBeatChange = (option) => {
+        setBeatChange(true)
         beatname.current = option
         console.log(beatname.current)
         if(beatname.current.toLowerCase() === "other"){
            setShowBeatInput(true);
         }
+        else{
+            setShowBeatInput(false)
+            setShowOrg(false);
+        }
     }
+
+    useEffect(() => {
+       if(!showOrg && beatChange){
+        setUpdatedList([...new Set(list.filter(item => ((item.PCNAME.toLowerCase() === "deepak") || item.PCNAME.toLowerCase() === "other") && (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME))])
+       }
+       setBeatChange(false);
+    },[list,showOrg,beatChange])
 
     const handleOtherBeat =(e)=>{
        setBeatInput(e.target.value)
@@ -126,10 +144,18 @@ function PCMarketTest() {
         {/* <p>Selected value: {beatname.current}</p> */}
         </div>
         {showBeatInput && <input className="inputClass" type="text" value={beatInput} onChange={handleOtherBeat}/>}
+        {showOrg ?
+         
         <div className='shopClass'>
-        <label>Shop Name</label><DropdownTest options={shopList.current} onSelect={handleShopChange}/>
+        <label>Shop Name</label><DropdownTest options={originalShopList.current} onSelect={handleShopChange}/>
          {/* <p>Selected value: {shopname.current}</p> */}
          </div>
+         :
+         <div className='shopClass'>
+         <label>Shop Name</label><DropdownTest options={updatedShopList} onSelect={handleShopChange}/>
+          {/* <p>Selected value: {shopname.current}</p> */}
+          </div>
+         }
          {showShopInput && <input className="inputClass" type="text" value={shopInput} onChange={handleOtherShop}/>}
          <div className='buttonClass'>
         <ButtonComponent label="Send Location" change={handleSubmit}></ButtonComponent>
