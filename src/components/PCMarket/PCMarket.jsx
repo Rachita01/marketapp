@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useRef} from 'react';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
 import Dropdown from '../DropdownComponent/DropdownComponent';
-import {useLocation,useNavigate} from 'react-router-dom';
+import {Link, useLocation,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './PCMarket.css';
 //import DropdownTest from '../DropDownTest/DropDownTest';
@@ -22,8 +22,13 @@ function PCMarket() {
     const [showShopInput,setShowShopInput] = useState(false);
     const [list,setList] = useState([]);
     const location = useLocation();
+    const storedName = localStorage.getItem("name")
+    console.log(JSON.stringify(location.state,storedName))
     const {name} = location.state || {}
+    const setName = storedName?storedName:name;
     const navigate = useNavigate();
+    const [locPresent,setLocPresent] = useState(false);
+    const locationFound = useRef("");
 
     useEffect(() => {
         const handleSendLocation = () => {
@@ -104,7 +109,16 @@ function PCMarket() {
         console.log(longitude,latitude)
 
     const handleShopChange = (option) => {
-        shopname.current = option
+
+        setLocPresent(false)
+        locationFound.current = ""
+        shopname.current = option;
+        locationFound.current = list.filter(item => item.BEATNAME === beatname.current && item.SHOPNAME === shopname.current).map(item => item.LOCATION);
+        console.log(locationFound.current[0])
+        if(locationFound.current[0]!==undefined){
+            setLocPresent(true);
+            console.log(locationFound.current[0]);
+        }
         console.log(shopname.current)
         if(shopname.current.toLowerCase() === "other"){
             setShowShopInput(true);
@@ -115,6 +129,9 @@ function PCMarket() {
     }
 
     const handleBeatChange = (option) => {
+
+        setLocPresent(false)
+        locationFound.current = ""
         setBeatChange(true)
         beatname.current = option
         console.log(beatname.current)
@@ -151,11 +168,25 @@ function PCMarket() {
             shopname.current = ""
             setBeatInput("")
             setShopInput("")
+            localStorage.clear();
         navigate("/", { replace: true })
+      }
+
+      const openNewWindow = (sugloc) => {
+        // localStorage.setItem("beatname",beatname.current);
+        // localStorage.setItem("shopname",shopname.current);
+        localStorage.setItem("name",name);
+        if(showBeatInput){
+            localStorage.setItem("otherbeat",beatInput);
+        }
+        if(showShopInput){
+          localStorage.setItem("other shop",shopInput);
+        }
+        window.open(sugloc,'_blank')
       }
   return (
     <div className='cardStyle'>
-        <h1 className='nameHead'>HI {name.toUpperCase()}</h1>
+        <h1 className='nameHead'>HI {setName.toUpperCase()}</h1>
         <div className='formCard'>
         <div className='beatClass'>
         <label className='pcLabel'>Beat Name</label><Dropdown options={beatList.current} onSelect={handleBeatChange}/>
@@ -175,6 +206,11 @@ function PCMarket() {
           </div>
          }
          {showShopInput && <input className="inputClass" type="text" value={shopInput} onChange={handleOtherShop}/>}
+         {locPresent && 
+            <div className='locClass'>
+                <Link onClick={() => openNewWindow(locationFound.current[0])}>Suggested Location</Link>
+            </div>
+         }
          <div className='buttonClass'>
         <ButtonComponent label="Send Location" change={handleSubmit}></ButtonComponent>
         </div>
