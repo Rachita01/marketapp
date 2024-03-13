@@ -9,12 +9,12 @@ const mdataSchema = mongoose.Schema(
 
         shopname:{
             type:String,
-            required:true,
+            required:false,
         },
 
         beatname:{
             type:String,
-            required:true
+            required:false
         },
         latitude:{
             type:String,
@@ -26,7 +26,7 @@ const mdataSchema = mongoose.Schema(
         },
         date:{
             type:String,
-            reuired:false
+            reuired:true
         }
     }
 );

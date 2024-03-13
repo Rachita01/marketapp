@@ -120,6 +120,36 @@
           "username": "SHIVAM",
           "password": "SHIVAM@110",
           "pccategory": "CAD - VISHWAS NAGAR"
+      },
+      {
+        "username": "Sachinaudit",
+        "password": "audit@111",
+        "pccategory": "PCP"
+      },
+      {
+        "username": "Deepakaudit",
+        "password": "audit@111",
+        "pccategory": "PCP"
+      },
+      {
+        "username": "Mohanaudit",
+        "password": "audit@111",
+        "pccategory": "PCP"
+      },
+      {
+        "username": "Satbeeraudit",
+        "password": "audit@111",
+        "pccategory": "PCP"
+      },
+      {
+        "username": "Audit1",
+        "password": "audit@111",
+        "pccategory": "PCP"
+      },
+      {
+        "username": "Audit2",
+        "password": "audit@111",
+        "pccategory": "PCP"
       }
   ]
     }

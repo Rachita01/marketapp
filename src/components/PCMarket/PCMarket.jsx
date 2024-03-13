@@ -1,7 +1,8 @@
 import React,{useState,useEffect,useRef} from 'react';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
-import Dropdown from '../DropdownComponent/DropdownComponent';
-import {Link, useLocation,useNavigate} from 'react-router-dom';
+// import Dropdown from '../DropdownComponent/DropdownComponent';
+// import {Link, 
+import {useLocation,useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import './PCMarket.css';
 //import DropdownTest from '../DropDownTest/DropDownTest';
@@ -13,13 +14,13 @@ function PCMarket() {
     const beatname = useRef("")
     const beatList = useRef([]);
     const originalShopList = useRef([]);
-    const [showOrg,setShowOrg] = useState(true);
-    const [beatChange,setBeatChange] = useState(false);
-    const [updatedShopList,setUpdatedList] =  useState([]);
+    // const [showOrg,setShowOrg] = useState(true);
+    // const [beatChange,setBeatChange] = useState(false);
+    // const [updatedShopList,setUpdatedList] =  useState([]);
     const [beatInput,setBeatInput] = useState("");
     const [shopInput,setShopInput] = useState("");
-    const [showBeatInput,setShowBeatInput] = useState(false);
-    const [showShopInput,setShowShopInput] = useState(false);
+    // const [showBeatInput,setShowBeatInput] = useState(false);
+    // const [showShopInput,setShowShopInput] = useState(false);
     const [list,setList] = useState([]);
     const location = useLocation();
     const storedName = localStorage.getItem("name")
@@ -27,8 +28,8 @@ function PCMarket() {
     const {name} = location.state || {}
     const setName = storedName?storedName:name;
     const navigate = useNavigate();
-    const [locPresent,setLocPresent] = useState(false);
-    const locationFound = useRef("");
+    // const [locPresent,setLocPresent] = useState(false);
+    // const locationFound = useRef("");
 
     useEffect(() => {
         const handleSendLocation = () => {
@@ -108,60 +109,60 @@ function PCMarket() {
     
         console.log(longitude,latitude)
 
-    const handleShopChange = (option) => {
+    // const handleShopChange = (option) => {
 
-        setLocPresent(false)
-        locationFound.current = ""
-        shopname.current = option;
-        locationFound.current = list.filter(item => item.BEATNAME === beatname.current && item.SHOPNAME === shopname.current).map(item => item.LOCATION);
-        console.log(locationFound.current[0])
-        if(locationFound.current[0]!==undefined){
-            setLocPresent(true);
-            console.log(locationFound.current[0]);
-        }
-        console.log(shopname.current)
-        if(shopname.current.toLowerCase() === "other"){
-            setShowShopInput(true);
-         }
-         else{
-            setShowShopInput(false)
-         }
-    }
+    //     setLocPresent(false)
+    //     locationFound.current = ""
+    //     shopname.current = option;
+    //     locationFound.current = list.filter(item => item.BEATNAME === beatname.current && item.SHOPNAME === shopname.current).map(item => item.LOCATION);
+    //     console.log(locationFound.current[0])
+    //     if(locationFound.current[0]!==undefined){
+    //         setLocPresent(true);
+    //         console.log(locationFound.current[0]);
+    //     }
+    //     console.log(shopname.current)
+    //     if(shopname.current.toLowerCase() === "other"){
+    //         setShowShopInput(true);
+    //      }
+    //      else{
+    //         setShowShopInput(false)
+    //      }
+    // }
 
-    const handleBeatChange = (option) => {
+    // const handleBeatChange = (option) => {
 
-        setLocPresent(false)
-        locationFound.current = ""
-        setBeatChange(true)
-        beatname.current = option
-        console.log(beatname.current)
-        if(beatname.current.toLowerCase() === "other"){
-           setShowBeatInput(true);
-        }
-        else{
-            setShowBeatInput(false)
-            setShowOrg(false);
-        }
-    }
+    //     setLocPresent(false)
+    //     locationFound.current = ""
+    //     setBeatChange(true)
+    //     beatname.current = option
+    //     console.log(beatname.current)
+    //     if(beatname.current.toLowerCase() === "other"){
+    //        setShowBeatInput(true);
+    //     }
+    //     else{
+    //         setShowBeatInput(false)
+    //         setShowOrg(false);
+    //     }
+    // }
 
-    useEffect(() => {
-        if(!showOrg && beatChange){
-            setUpdatedList([...new Set(list.filter(item => (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME).sort())])
-           }
-           setBeatChange(false);    
+    // useEffect(() => {
+    //     if(!showOrg && beatChange){
+    //         setUpdatedList([...new Set(list.filter(item => (item.BEATNAME.toLowerCase() === beatname.current.toLowerCase())).map(item => item.SHOPNAME).sort())])
+    //        }
+    //        setBeatChange(false);    
       
-    },[list,showOrg,beatChange,name])
+    // },[list,showOrg,beatChange,name])
 
-    const handleOtherBeat =(e)=>{
-       setBeatInput(e.target.value)
-       console.log(beatInput)
-    }
+    // const handleOtherBeat =(e)=>{
+    //    setBeatInput(e.target.value)
+    //    console.log(beatInput)
+    // }
 
     
-    const handleOtherShop =(e)=>{
-        setShopInput(e.target.value)
-        console.log(shopInput)
-     }
+    // const handleOtherShop =(e)=>{
+    //     setShopInput(e.target.value)
+    //     console.log(shopInput)
+    //  }
 
      const handleLogout = () => {
             beatname.current = ""
@@ -172,45 +173,22 @@ function PCMarket() {
         navigate("/", { replace: true })
       }
 
-      const openNewWindow = (sugloc) => {
-        // localStorage.setItem("beatname",beatname.current);
-        // localStorage.setItem("shopname",shopname.current);
-        localStorage.setItem("name",name);
-        if(showBeatInput){
-            localStorage.setItem("otherbeat",beatInput);
-        }
-        if(showShopInput){
-          localStorage.setItem("other shop",shopInput);
-        }
-        window.open(sugloc,'_blank')
-      }
+    //   const openNewWindow = (sugloc) => {
+    //     // localStorage.setItem("beatname",beatname.current);
+    //     // localStorage.setItem("shopname",shopname.current);
+    //     localStorage.setItem("name",name);
+    //     if(showBeatInput){
+    //         localStorage.setItem("otherbeat",beatInput);
+    //     }
+    //     if(showShopInput){
+    //       localStorage.setItem("other shop",shopInput);
+    //     }
+    //     window.open(sugloc,'_blank')
+    //   }
   return (
     <div className='cardStyle'>
         <h1 className='nameHead'>HI {setName.toUpperCase()}</h1>
         <div className='formCard'>
-        <div className='beatClass'>
-        <label className='pcLabel'>Beat Name</label><Dropdown options={beatList.current} onSelect={handleBeatChange}/>
-        {/* <p>Selected value: {beatname.current}</p> */}
-        </div>
-        {showBeatInput && <input className="inputClass" type="text" value={beatInput} onChange={handleOtherBeat}/>}
-        {showOrg ?
-         
-        <div className='shopClass'>
-        <label className='pcLabel'>Shop Name</label><Dropdown options={originalShopList.current} onSelect={handleShopChange}/>
-         {/* <p>Selected value: {shopname.current}</p> */}
-         </div>
-         :
-         <div className='shopClass'>
-         <label className='pcLabel'>Shop Name</label><Dropdown options={updatedShopList} onSelect={handleShopChange}/>
-          {/* <p>Selected value: {shopname.current}</p> */}
-          </div>
-         }
-         {showShopInput && <input className="inputClass" type="text" value={shopInput} onChange={handleOtherShop}/>}
-         {locPresent && 
-            <div className='locClass'>
-                <Link onClick={() => openNewWindow(locationFound.current[0])}>Suggested Location</Link>
-            </div>
-         }
          <div className='buttonClass'>
         <ButtonComponent label="Send Location" change={handleSubmit}></ButtonComponent>
         </div>
