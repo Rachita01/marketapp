@@ -28,10 +28,13 @@ function PCMarket() {
     const {name} = location.state || {}
     const setName = storedName?storedName:name;
     const navigate = useNavigate();
+    const [locSent,setLocSent] = useState(false);
     // const [locPresent,setLocPresent] = useState(false);
     // const locationFound = useRef("");
 
     useEffect(() => {
+        setLocSent(false);
+        console.log("Data refreshed");
         const handleSendLocation = () => {
             if ("geolocation" in navigator) {
                 navigator.geolocation.getCurrentPosition(
@@ -67,7 +70,7 @@ function PCMarket() {
           originalShopList.current = [...new Set(list.map(item => item.SHOPNAME).sort())];
           
         
-    },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput])
+    },[latitude,longitude,beatname,shopname,list,name,beatInput,shopInput,locSent])
 
     const getCurrentDate = () => {
         const date = new Date();
@@ -173,6 +176,10 @@ function PCMarket() {
         navigate("/", { replace: true })
       }
 
+      const handleRefresh = () => {
+        setLocSent(true);
+      }
+
     //   const openNewWindow = (sugloc) => {
     //     // localStorage.setItem("beatname",beatname.current);
     //     // localStorage.setItem("shopname",shopname.current);
@@ -189,6 +196,9 @@ function PCMarket() {
     <div className='cardStyle'>
         <h1 className='nameHead'>HI {setName.toUpperCase()}</h1>
         <div className='formCard'>
+        <div className='buttonClass'>
+            <ButtonComponent label="Refresh" change={handleRefresh}></ButtonComponent>
+        </div>
          <div className='buttonClass'>
         <ButtonComponent label="Send Location" change={handleSubmit}></ButtonComponent>
         </div>
